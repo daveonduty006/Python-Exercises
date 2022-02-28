@@ -5,8 +5,8 @@ def add_carre(n1=1, n2=1):
     return n1**2 + n2**2
 
 
-n1 = 10
-n2 = 20
-print(add_carre(n1, n2))
-print(add_carre(n1))
+x = 10
+y = 20
+print(add_carre(x, y))
+print(add_carre(x))
 print(add_carre())
