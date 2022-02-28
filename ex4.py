@@ -1,12 +1,12 @@
 # Créer une fonction prenant trois nombres et retournant la moyenne de leur carré + 1.
 
 def moy(a, b, c):
-    e = 2
 
-    def exp(n):
+    def fonc(n):
+        e = 2
         return n**e+1
 
-    return (exp(a)+exp(b)+exp(c))
+    return (fonc(a)+fonc(b)+fonc(c))/3
 
 
 x= 5
@@ -18,12 +18,12 @@ print(moy(x,y,z))
 # Ensuite, modifier la fonction pour retourner la moyenne de leur cube + 2.
 
 def moy(a, b, c):
-    e = 3
 
-    def exp(n):
+    def fonc(n):
+        e = 3
         return n**e+2
 
-    return (exp(a)+exp(b)+exp(c))
+    return (fonc(a)+fonc(b)+fonc(c))/3
 
 
 x= 5
@@ -36,10 +36,10 @@ print(moy(x,y,z))
 
 def moy(a, b, c):
 
-    def exp(n):
+    def fonc(n):
         return n**n+n+3
 
-    return (exp(a)+exp(b)+exp(c))/3
+    return (fonc(a)+fonc(b)+fonc(c))/3
 
 
 x= 5
