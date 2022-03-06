@@ -13,29 +13,29 @@
 
 import math
 
-def dms_to_DD(deg_dms, min_dms, sec_dms):
-    deg_dd = float(deg_dms)
-    min_dd = min_dms/60
-    sec_dd = sec_dms/3600
-    return deg_dd+min_dd+sec_dd
-# distance de quel nord? # deux lignes vides entre définition de fonction
-def distance_du_nord(coord_lat, coord_long):
-    distance_lat = (86-coord_lat)**2
-    distance_long = (172-coord_long)**2
-    return math.sqrt(distance_lat+distance_long)*111.16
+# conversion de données DMS à DD
+def decimal_degrees(position):
+    degrees, minutes, seconds = position
+    return degrees + minutes / 60 + seconds / 3600
 
-# définir le degré-minute-seconde de quoi (dans ce cas, degré-minute-seconde DMS)
-# définir quelle ville est représentée par ces données
-DEG_LAT = 35
-MIN_LAT = 39
-SEC_LAT = 10.08
+# calcul de distance entre deux points
+def distance(p1_x, p1_y, p2_x, p2_y):
+    return math.sqrt((p2_x-p1_x)**2+(p2_y-p1_y)**2) * 111.16 + 1000
 
-DEG_LONG = 139
-MIN_LONG = 50
-SEC_LONG = 21.84
 
-mes_coord_lat = dms_to_DD(DEG_LAT, MIN_LAT, SEC_LAT)
-mes_coord_long = dms_to_DD(DEG_LONG, MIN_LONG, SEC_LONG)
+# locations en données DMS 
+POLE_NORD_X = 80, 65, 38
+POLE_NORD_Y = 72, 68, 1
+MONTREAL_X = 45, 50, 7
+MONTREAL_Y = 73, 56, 73
 
-print(distance_du_nord(mes_coord_lat, mes_coord_long))
+# locations en données DD
+polenord_dd_x = decimal_degrees(POLE_NORD_X)
+polenord_dd_y = decimal_degrees(POLE_NORD_Y)
+montreal_dd_x = decimal_degrees(MONTREAL_X)
+montreal_dd_y = decimal_degrees(MONTREAL_Y)
+
+print(f"Pôle Nord magnétique: {polenord_dd_x:.3f}, {polenord_dd_y:.3f}")
+print(f"Montréal: {montreal_dd_x:>18.3f}, {montreal_dd_y:.3f}")
+print(f"Distance: {distance(polenord_dd_x, polenord_dd_y, montreal_dd_x, montreal_dd_y):>20.3f}")
 
