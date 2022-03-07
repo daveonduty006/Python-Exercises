@@ -2,7 +2,7 @@
 #et retournez-lui sa saison de naissance s'il est né dans l'hémisphère Nord. 
 #(Vous pouvez assumer que les équinoxes et solstices ont lieu le 21 du mois.)
 
-# !!!EXERCISE EXPRESSÉMENT FAIT SANS UTILISATION D'OPÉRATEURS LOGIQUES!!!
+# !!!EXERCISE EXPRESSÉMENT FAIT SANS UTILISATION D'OPÉRATEURS LOGIQUES OU DE BOUCLES!!!
 def saison_naissance(jour_fete_entrant, mois_fete_entrant):
         if mois_fete_entrant == 3:
             if jour_fete_entrant < 21:
