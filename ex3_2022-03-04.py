@@ -8,9 +8,7 @@ def operations(nb, exp=2, div=1):
     return (nb**exp)/div
 
 
-CHIFFRE_DE_BASE = 3
-EXPOSANT = 3
-DIVISEUR = 2
+CHIFFRE_DE_BASE, EXPOSANT, DIVISEUR = 4, 3, 2
 
 print(operations(CHIFFRE_DE_BASE, EXPOSANT, DIVISEUR))
 
