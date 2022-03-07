@@ -21,25 +21,25 @@ def fract_equi(num1_entrant, den1_entrant, num2_entrant, den2_entrant):
 def addition(fraction1_entrante, fraction2_entrante):
     prop_num1, den_commun, deci_fract1 = fraction1_entrante
     prop_num2, den_commun, deci_fract2 = fraction2_entrante 
-    add_proper_fraction = f"{prop_num1+prop_num2}/{den_commun}"
+    add_proper_fraction = str(prop_num1+prop_num2)+"/"+str(den_commun)
     return deci_fract1+deci_fract2, add_proper_fraction
 
 def soustraction(fraction1_entrante, fraction2_entrante):
     prop_num1, den_commun, deci_fract1 = fraction1_entrante
     prop_num2, den_commun, deci_fract2 = fraction2_entrante 
-    sous_proper_fraction = f"{prop_num1-prop_num2}/{den_commun}"
+    sous_proper_fraction = str(prop_num1-prop_num2)+"/"+str(den_commun)
     return deci_fract1-deci_fract2, sous_proper_fraction
 
 def multiplication(fraction1_entrante, fraction2_entrante):
     prop_num1, den_commun, deci_fract1 = fraction1_entrante
     prop_num2, den_commun, deci_fract2 = fraction2_entrante 
-    mul_proper_fraction = f"{prop_num1*prop_num2}/{den_commun*den_commun}"
+    mul_proper_fraction = str(prop_num1*prop_num2)+"/"+str(den_commun*den_commun)
     return deci_fract1*deci_fract2, mul_proper_fraction
 
 def division(fraction1_entrante, fraction2_entrante):
     prop_num1, den_commun, deci_fract1 = fraction1_entrante
     prop_num2, den_commun, deci_fract2 = fraction2_entrante 
-    div_proper_fraction = f"{prop_num1*den_commun}/{den_commun*prop_num2}"
+    div_proper_fraction = str(prop_num1*den_commun)+"/"+str(den_commun*prop_num2)
     return deci_fract1/deci_fract2, div_proper_fraction
 
     
