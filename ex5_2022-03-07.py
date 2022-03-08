@@ -4,12 +4,13 @@
 #suivante: Votre nombre impair est le x, votre nombre pair est le y et le résultat de leur division 
 #est égal à z. Vous ne devez qu'afficher 3 chiffres après le point.
 
-
+# détermination des nombres
 def nombres():
     nb_pair = int(input("Entrez un nombre pair"))
     nb_impair = int(input("Entrez un nombre impair"))
     return nb_pair, nb_impair 
 
+# vérification de la parité des chiffres
 def verification(nb1_pair, nb2_impair):
     if nb1_pair % 2 != 0:
         print("Votre nombre pair n'est pas pair!")
@@ -21,10 +22,13 @@ def verification(nb1_pair, nb2_impair):
     return ok 
 
 
+# appel de la fonction nombres et unpacking des valeurs de retour 
 nombre_pair, nombre_impair = nombres()
 
+# appel de la fonction verification et obtention du checkup
 checkup = verification(nombre_pair, nombre_impair)
 
+# affichage de la phrase SEULEMENT SI LE CHECKUP EST OBTENU
 if checkup == 1:
     phrase = (f"Votre nombre impair est le {nombre_impair}, votre nombre "
               f"pair est le {nombre_pair} et le résultat de leur division est "

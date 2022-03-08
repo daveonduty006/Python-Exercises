@@ -11,15 +11,16 @@ def decimal_degrees(position):
     if position == pos_x:
         pos_deg_x, pos_min_x, pos_sec_x, pos_dir_x = position
         if pos_dir_x == "N":
-            return pos_deg_x + pos_min_x/60 + pos_sec_x/3600
+            pos_dd = pos_deg_x + pos_min_x/60 + pos_sec_x/3600
         else:
-            return -(pos_deg_x + pos_min_x/60 + pos_sec_x/3600)
+            pos_dd = -(pos_deg_x + pos_min_x/60 + pos_sec_x/3600)
     else:
         pos_deg_y, pos_min_y, pos_sec_y, pos_dir_y = position
         if pos_dir_y == "E":
-            return pos_deg_y + pos_min_y/60 + pos_sec_y/3600
+            pos_dd = pos_deg_y + pos_min_y/60 + pos_sec_y/3600
         else:
-            return -(pos_deg_y + pos_min_y/60 + pos_sec_y/3600)
+            pos_dd = -(pos_deg_y + pos_min_y/60 + pos_sec_y/3600)
+    return pos_dd 
 
 
 # entrées de l'utilisateur pour la latitude
