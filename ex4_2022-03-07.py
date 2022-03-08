@@ -38,9 +38,10 @@ def saison_naissance(jour_fete_entrant, mois_fete_entrant):
             saison_fete = "été"
         elif mois_fete_entrant == 10:
             saison_fete = "automne"
-        elif mois_fete_entrant <= 11:
+        elif mois_fete_entrant == 11:
             saison_fete = "automne"
         return saison_fete
+
 
 rep = input("Êtes-vous né dans l'hémisphère nord?")
 if rep == "oui":
