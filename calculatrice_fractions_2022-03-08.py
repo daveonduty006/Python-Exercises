@@ -1,7 +1,12 @@
 #Exercice 8:
+#Partie 1:
 #Reprendre l'exercice de la calculatrice de fraction, et implémenter un menu permettant à 
 #l'utilisateur d'effectuer les opérations définies et retourner les résultats sous forme de fraction 
 #réduite et sous forme de float avec 3 chiffres après la virgule. 
+
+#Partie 2:
+#Modifiez votre fonction de sorte que l'opération entrée par l'utilisateur vous permette de 
+#sélectionner la bonne fonction en utilisant l'instruction match au lieu de plusieurs if.   
 
 from fractions import Fraction
 
@@ -35,6 +40,19 @@ def division(fraction1_entrante, fraction2_entrante):
     fract_redu = str(Fraction(prop_num1*den_commun, den_commun*prop_num2))
     return f"{deci_fract1/deci_fract2:.3f}", fract_redu 
 
+def rep_utilisateur(reponse):
+    match reponse:
+        case 1:
+            return print(addition(fraction1, fraction2))
+        case 2:
+            return print(soustraction(fraction1, fraction2))
+        case 3:
+            return print(multiplication(fraction1, fraction2))
+        case 4:
+            return print(division(fraction1, fraction2))
+        case _:
+            return print("Le chiffre que vous avez entré est invalide :(")
+        
 
 num1 = int(input("Entrez le numérateur de la première fraction: "))
 den1 = int(input("Entrez le dénominateur de la première fraction: "))
@@ -55,14 +73,15 @@ Pour faire la multiplication de fractions, entrez 3
 Pour faire la division de fractions, entrez 4 
 """))
 
-if rep_operation == 1:
-    print(addition(fraction1, fraction2))
-elif rep_operation == 2:
-    print(soustraction(fraction1, fraction2))
-elif rep_operation == 3:
-    print(multiplication(fraction1, fraction2))
-elif rep_operation ==4:
-    print(division(fraction1, fraction2))
-else:
-    print("Le chiffre que vous avez entré est invalide :(")
-    
+rep_utilisateur(rep_operation)
+
+#if rep_operation == 1:
+#    print(addition(fraction1, fraction2))
+#elif rep_operation == 2:
+#    print(soustraction(fraction1, fraction2))
+#elif rep_operation == 3:
+#    print(multiplication(fraction1, fraction2))
+#elif rep_operation ==4:
+#    print(division(fraction1, fraction2))
+#else:
+#    print("Le chiffre que vous avez entré est invalide :(")
