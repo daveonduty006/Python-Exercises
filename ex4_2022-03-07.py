@@ -46,13 +46,15 @@ def saison_naissance(jour_fete_entrant, mois_fete_entrant):
 
 
 # question initiale pour démarrer le programme
-rep = input("Êtes-vous né dans l'hémisphère nord?")
+rep = input("Êtes-vous né dans l'hémisphère nord? ")
 
 # confirmation de l'hémisphère et entrées de l'utilisateur
 if rep == "oui":
-    jour_fete = int(input("Entrez le jour votre fête (seulement le jour)..."))
-    mois_fete = int(input("Entrez le mois votre fête en chiffres (ex mars = 3)..."))
+    jour_fete = int(input("Entrez le jour votre fête: "))
+    mois_fete = int(input("Entrez le mois votre fête en chiffre(s): "))
     saison_naissance_fete = saison_naissance(jour_fete, mois_fete)
     print(f"Vous êtes né en {saison_naissance_fete}!")
+else: 
+    print("fin du programme")
 
 

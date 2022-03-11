@@ -1,21 +1,20 @@
-#Créez un programme demandant à un utilisateur d'entrer un entier et retournez-lui le carré. Si le nombre 
-#est positif, retournez-lui aussi la racine carrée.
+#Exercice 1:
+#Créez un programme demandant à un utilisateur d'entrer un entier et retournez-lui le carré. Si le 
+#nombre est positif, retournez-lui aussi la racine carrée.
 
-import math 
+from math import sqrt
 
-def operations(nb_entrant):
-    if nb_entrant > 0:
-        return nb_entrant**2, math.sqrt(nb_entrant)
+def modification_s(nombre):
+    if nombre > 0:
+        return nombre**2, float(f"{sqrt(nombre):.3f}")
     else:
-        return nb_entrant**2 
+        return nombre**2 
 
 
-nb = int(input("Entrez votre nombre"))
-if nb > 0:
-    carre, racine_carre = operations(nb)
-    print(carre, racine_carre)
-else:
-    print(operations(nb))
+rep = int(input("Entrez un nombre entier: "))
+
+print(modification_s(rep))
 
 
 
+        

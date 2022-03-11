@@ -32,8 +32,7 @@ checkup = verification(nombre_pair, nombre_impair)
 if checkup == 1:
     phrase = (f"Votre nombre impair est le {nombre_impair}, votre nombre "
               f"pair est le {nombre_pair} et le résultat de leur division est "
-              f"égal à {nombre_impair/nombre_pair:.3f}."
-    )
+              f"égal à {nombre_impair/nombre_pair:.3f}.")
     print(phrase)
 
             

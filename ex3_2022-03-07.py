@@ -1,20 +1,18 @@
-#Créez un programme demandant à un utilisateur d'entrer sa date de fête, 
-# si la date est le 7 mars, affichez un message souhaitant bonne fête 
-# à l'utilisateur, sinon affichez le message suivant: 
-# Ce n'est pas ta fête aujourd'hui :(.
+#Exercice 3:
+#Créez un programme demandant à un utilisateur d'entrer sa date de fête, si la date est le 7 mars, 
+#affichez un message souhaitant bonne fête à l'utilisateur, sinon affichez le message suivant: Ce 
+#n'est pas ta fête aujourd'hui :(.
 
-def bonne_fete(date_entrant):
-    if date_fete == "7 mars":
-        message = "bonne fête!!!"
-        return message 
+def messages(jour_entrant, mois_entrant):
+    if jour_entrant == 7:
+        if mois_entrant == 3:
+            message = "Bonne fête!"
     else:
-        message = "ce n'est pas ta fête aujourd'hui :("
-        return message 
-
-date_fete = input("Entrez votre jour et mois de fête (ex: 25 octobre)...")
-
-print(bonne_fete(date_fete))
+        message = "Ce n'est pas ta fête aujourd'hui :(."
+    return message 
 
 
+jour_fete = int(input("Entrez le jour de votre naissance: "))
+mois_fete = int(input("Entrez le mois de votre fête en chiffre(s): "))
 
-
+print(messages(jour_fete, mois_fete))
