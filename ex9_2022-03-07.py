@@ -16,7 +16,7 @@
 
 
 # fonction de contrôle du programme, les appels aux sous-fonctions sont fait ici
-def main():
+def appels():
     prix_influe, prix_original = prix1970_to_prix2021()
     nb_heures_travail(prix_influe, prix_original, 0)
     nb_heures_travail(prix_influe, prix_original, 1)
@@ -53,7 +53,7 @@ def nb_heures_travail(prix_en_2021, prix_en_1970, test):
 
 
 # seul l'appel à la fonction main est présente dans le bloc d'instructions
-print(main())
+print(appels())
 
 
 
