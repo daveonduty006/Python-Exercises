@@ -3,5 +3,5 @@ Keven Presseau-St-Laurent
 Logique Mathématique pour l'Informatique 
 Emma Parent Senez
 Systèmes d'Exploitation 
-Jean-Pierre Fiset 
+Jean-Pierre Fiset
  

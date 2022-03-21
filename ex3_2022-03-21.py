@@ -4,19 +4,25 @@
 #Ensuite, afficher un menu à la console présentant les 5 cours et offrant à l'utilisateur d'en sélectionner 1. Lorsque l'utilisateur à fait sa 
 #sélection, afficher le nom de l'enseignant et le nom du cours à l'écran.
 
+def liste_cles(dico_entrant):
+    return list(dico_entrant.keys())
+
 def menu_cours(): 
-    dico_cours = {"prog" : "Keven Presseau-St-Laurent", "math" : "Emma Parent Senez", "os" : "Jean-Pierre Fiset"}
+    dico_cours = {"Keven Presseau-St-Laurent" : "Concepts de Programmation 1", \
+                  "Emma Parent Senez" : "Logique Mathématique pour l'Informatique", \
+                  "Jean-Pierre Fiset" : "Systèmes d'Exploitation"}
     selection_user = int(input("Voici le menu de vos cours: \n"
                                "1. Concepts de Programmation 1 \n"
                                "2. Logique Mathématique pour l'Informatique \n"
                                "3. Systèmes d'Exploitation \n"
                                "Choisissez un cours: "))
+    liste_de_cles = liste_cles(dico_cours)
     if selection_user == 1:
-        print(f"{dico_cours['prog']} - Concepts de Programmation 1")
+        print(f"{liste_de_cles[0]} - {dico_cours[liste_de_cles[0]]}")
     elif selection_user == 2:
-        print(f"{dico_cours['math']} - Logique Mathématique pour l'Informatique") 
+        print(f"{liste_de_cles[1]} - {dico_cours[liste_de_cles[1]]}")
     elif selection_user == 3:
-        print(f"{dico_cours['os']} - Systèmes d'Exploitation")     
+        print(f"{liste_de_cles[2]} - {dico_cours[liste_de_cles[2]]}")    
     else:
         print("Votre sélection est invalide")           
     return

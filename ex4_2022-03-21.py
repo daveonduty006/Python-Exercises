@@ -8,16 +8,13 @@
 
 def remplissage_dico():
     dico = {}
-    file = open("bdd.txt", "r", encoding="utf8")
-    liste_lignes = file.readlines()
-    cours1 = str(liste_lignes[0])
-    prof1 = str(liste_lignes[1])
-    cours2 = str(liste_lignes[2])
-    prof2 = str(liste_lignes[3])
-    cours3 = str(liste_lignes[4])
-    prof3 = str(liste_lignes[5])
-    dico = {"cours1" : "prof1", "cours2" : "prof2", "cours3" : "prof3"}
-    return print(dico["cours1"])
+    fichier = open("bdd.txt", "r", encoding="utf8")
+    liste_lignes = fichier.readlines()
+    fichier.close()
+    prog, math, os = liste_lignes[0], liste_lignes[2], liste_lignes[4]  
+    dico = {prog : liste_lignes[1], math : liste_lignes[3], os : liste_lignes[5]}
+    return print(f"{prog} : {dico[prog]}"), print(f"{math} : {dico[math]}"), \
+           print(f"{os} : {dico[os]}")
 
 
 remplissage_dico()
