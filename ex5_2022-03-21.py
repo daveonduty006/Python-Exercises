@@ -6,12 +6,11 @@
 
 # fonction de l'exercise 4 avec valeur de retour
 def remplissage_dico():
-    dico = {}
     fichier = open("bdd.txt", "r", encoding="utf8")
     liste_lignes = fichier.readlines()
-    fichier.close()
-    prog, math, os = liste_lignes[0], liste_lignes[2], liste_lignes[4]  
-    dico = {prog : liste_lignes[1], math : liste_lignes[3], os : liste_lignes[5]}
+    fichier.close()  
+    dico = {liste_lignes[0] : liste_lignes[1], liste_lignes[2] : liste_lignes[3], \
+            liste_lignes[4] : liste_lignes[5]}
     return dico
 
 # fonction de l'exercise 3 modifiée selon l'énoncé de l'exercise 5 
@@ -43,8 +42,11 @@ def menu_user(dico_entrant):
         #ajustement pour le \n présent dans la compilation du dictionnaire à partir du fichier .txt 
         selection_prof1 = selection_prof + "\n"
         #
+        index_val = liste_de_vals.index(selection_prof1)
+        index_cle = index_val - 1 
         if selection_prof1 in liste_de_vals:
-            print(f"\n{selection_prof} est l'un/une de vos enseignant(e)s")
+            print(f"\n{selection_prof} est l'un/une de vos enseignant(e)s \n"
+                  f"Son cours est {liste_de_cles[index_cle]}")
         else:
             print(f"\n{selection_prof} n'est pas l'un/une de vos enseignant(e)s")
     else: 

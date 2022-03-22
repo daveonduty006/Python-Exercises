@@ -3,22 +3,23 @@
 #d'enseignant à la base de données de l'exercice 4. Une fois les données utilisateurs entrées, 
 #ajouter les informations à la fin du document bdd.txt
 
-# fonction de l'exercise 4 avec valeur de retour
+# fonction remplissant un dictionnaire à partir d'une base de données
 def remplissage_dico():
     dico = {}
     fichier = open("bdd.txt", "r", encoding="utf8")
     liste_lignes = fichier.readlines()
     fichier.close()
-    dico = {liste_lignes[0] : liste_lignes[1], liste_lignes[2] : liste_lignes[3], liste_lignes[4] : liste_lignes[5]}
+    dico = {liste_lignes[0] : liste_lignes[1], liste_lignes[2] : liste_lignes[3], \
+            liste_lignes[4] : liste_lignes[5]}
     return dico
 
-# fonction de l'exercise 6 
+# fonction ajoutant de l'information dans la base de données
 def mise_a_jour_dico(cours_entrant, enseignant_entrant):
     fichier = open("bdd.txt", "a", encoding="utf8")
     fichier.write(f"\n{cours_entrant}\n{enseignant_entrant}")
     fichier.close()
 
-# fonction de l'exercise 3 modifiée selon l'exercise 5 
+# fonction représentant les menus offerts à l'utilisateur 
 def menu_user(dico_entrant):
     #récupère toutes mes clés et valeurs d'association dans 2 listes différentes   
     liste_de_cles = list(dico_entrant.keys())
