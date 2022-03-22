@@ -11,8 +11,10 @@ def remplissage_dico():
     fichier = open("bdd.txt", "r", encoding="utf8")
     liste_lignes = fichier.readlines()
     fichier.close()
+    #ca marche mais ajout de travail pour rien. aurait pu juste créer dico = liste_lignes, etc...
     prog, math, os = liste_lignes[0], liste_lignes[2], liste_lignes[4]  
     dico = {prog : liste_lignes[1], math : liste_lignes[3], os : liste_lignes[5]}
+    #pas besoin de faire de print
     return print(f"{prog} : {dico[prog]}"), print(f"{math} : {dico[math]}"), \
            print(f"{os} : {dico[os]}")
 

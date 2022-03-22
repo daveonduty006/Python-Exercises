@@ -23,6 +23,7 @@ def menu_user(dico_entrant):
                                "1. Vos cours \n"
                                "2. Vos enseignants \n"
                                "Choisissez un répertoire: "))
+    #l'énoncé demande de trouver un enseignant, c'est tout. pkoi demander de choisir un cours?
     if selection_repo == 1:
         selection_cours = int(input("\nVoici le menu de vos cours: \n"
                                "1. Concepts de Programmation 1 \n"
@@ -51,7 +52,7 @@ def menu_user(dico_entrant):
     else: 
         print("Choix de répertoire invalide")
     return
-
+# ne fonctionne pas lorsque on écrit le nom d'un enseignant
 
 dico_cours = remplissage_dico()
 menu_user(dico_cours)
