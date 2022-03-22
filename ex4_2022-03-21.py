@@ -17,6 +17,8 @@ def remplissage_dico():
     return print(dico)
 
 
+
+
 remplissage_dico()
 
     

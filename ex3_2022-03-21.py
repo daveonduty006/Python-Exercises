@@ -33,4 +33,5 @@ def menu_user(dico_entrant):
 dico_cours = {"Keven Presseau-St-Laurent" : "Concepts de Programmation 1", \
               "Emma Parent Senez" : "Logique Mathématique pour l'Informatique", \
               "Jean-Pierre Fiset" : "Systèmes d'Exploitation"}
+              
 menu_user(dico_cours)
