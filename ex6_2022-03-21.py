@@ -46,10 +46,12 @@ def menu_user(dico_entrant):
     elif selection_repo == 2:
         selection_prof = input("\nEntrez le nom complet de votre enseignant avec majuscules: ")
         #ajustement pour le \n présent dans la compilation du dictionnaire à partir du fichier .txt 
-        selection_prof1 = selection_prof + "\n"
+        selection_prof1 = selection_prof + " \n"
         #
+        index = liste_de_vals.index(selection_prof1)
         if selection_prof1 in liste_de_vals:
-            print(f"\n{selection_prof} est l'un/une de vos enseignant(e)s")
+            print(f"\n{selection_prof} est l'un/une de vos enseignant(e)s \n"
+                  f"Son cours est {liste_de_cles[index]}")
         else:
             print(f"\n{selection_prof} n'est pas l'un/une de vos enseignant(e)s")
     elif selection_repo == 3: 

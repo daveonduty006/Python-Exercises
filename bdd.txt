@@ -1,6 +1,7 @@
 Concepts de Programmation 1 
-Keven Presseau-St-Laurent
+Keven Presseau-St-Laurent 
 Logique Mathématique pour l'Informatique 
-Emma Parent Senez
+Emma Parent Senez 
 Systèmes d'Exploitation 
-Jean-Pierre Fiset
+Jean-Pierre Fiset 
+

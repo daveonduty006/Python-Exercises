@@ -42,11 +42,10 @@ def menu_user(dico_entrant):
         #ajustement pour le \n présent dans la compilation du dictionnaire à partir du fichier .txt 
         selection_prof1 = selection_prof + "\n"
         #
-        index_val = liste_de_vals.index(selection_prof1)
-        index_cle = index_val - 1 
+        index = liste_de_vals.index(selection_prof1)
         if selection_prof1 in liste_de_vals:
             print(f"\n{selection_prof} est l'un/une de vos enseignant(e)s \n"
-                  f"Son cours est {liste_de_cles[index_cle]}")
+                  f"Son cours est {liste_de_cles[index]}")
         else:
             print(f"\n{selection_prof} n'est pas l'un/une de vos enseignant(e)s")
     else: 
