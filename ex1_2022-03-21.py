@@ -4,15 +4,20 @@
 
 def verification_prime():
     N_PREMIER = [2, 3, 5, 7, 11, 13, 17, 19]
+
     user_chiffre = int(input("Entrez un nombre entre 2 et 20: "))
+
     if 2 <= user_chiffre <= 20: 
         if user_chiffre in N_PREMIER:
             print("Votre chiffre est prime")
         else:
             print("Votre chiffre n'est pas prime")
+
     else: 
         print("Votre chiffre est invalide") 
+
     return 
+
 
 
 verification_prime()
