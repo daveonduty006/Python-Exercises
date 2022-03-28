@@ -16,12 +16,13 @@
 #inscrire que le mode = none)
 #Ex: 1, 2, 2, 2, 3, 4, 3, 4. La mode = 3
 
+# fonction controllant le flux du programme 
 def control():
     file_name, int_list = user_data()
     file_write(file_name, int_list)
     return
 
-
+# fonction récoltant les retours de l'utilisateur
 def user_data():
     file_name = input("Entrez le nom de votre futur fichier: ")
 
@@ -34,43 +35,54 @@ def user_data():
 
     return file_name, int_list
 
-
+# fonction ajoutant les statistiques dans un fichier txt via une boucle "for"
+# (le calcul des stats les plus simples à obtenir sont également effectuées ici)
 def file_write(name_of_file, list_of_integers):
+    ascending_order = f"ordre croissant: {sorted(list_of_integers)}\n"
 
-    ordre_croissant = f"ordre croissant: {sorted(list_of_integers)}\n"
-
-    ordre_decroissant = f"ordre décroissant: {sorted(list_of_integers, reverse=True)}\n"
+    descending_order = (f"ordre décroissant: "
+                        f"{sorted(list_of_integers, reverse=True)}\n")
 
     maximum = f"maximum: {max(list_of_integers)}\n"
 
     minimum = f"minimum: {min(list_of_integers)}\n"
 
-    moyenne = f"moyenne: {sum(list_of_integers)/len(list_of_integers)}\n"
+    average = f"moyenne: {sum(list_of_integers)/len(list_of_integers)}\n"
 
-    if len(list_of_integers) % 2 == 1:
-        o_croissant = sorted(list_of_integers)
-        index = int((len(list_of_integers)-1)/2) 
-        mediane = f"médiane: {o_croissant[index]}\n"
-    else: 
-        o_croissant = sorted(list_of_integers)
-        half_index1 = int((len(list_of_integers))/2)
-        half_index2 = int(((len(list_of_integers))/2)+1)
-        mediane = f"médiane: {(o_croissant[half_index1]+o_croissant[half_index2])/2}\n"
+    median = calculate_median(list_of_integers) 
+    median = f"médiane: {median}\n"
+ 
+    mode = calculate_mode(list_of_integers)
+    mode = f"mode: {mode}\n"
 
-    mode = f"mode: {max(set(list_of_integers), key=list_of_integers.count)}\n"
-
-    stats = [ordre_croissant, ordre_decroissant, maximum, minimum, moyenne, \
-             mediane, mode]
+    stats = [ascending_order, descending_order, maximum, minimum, average, \
+             median, mode]
 
     f = open(f"{name_of_file}.txt", "w", encoding="utf8")
-
     for stat in stats:
         f.write(stat)
-
     f.close()
 
     return 
 
+# fonction calculant la médiane de la liste de positifs 
+def calculate_median(list_of_integers):
+    sorted_list = sorted(list_of_integers)
+    index = len(list_of_integers) // 2 
+    if len(sorted_list) % 2 == 1:
+        return sorted_list[index]
+    else: 
+        return (sorted_list[index-1] + sorted_list[index]) / 2
+
+# fonction calculant le mode de la liste de positifs 
+def calculate_mode(list_of_integers):
+    if len(list_of_integers) != len(set(list_of_integers)):
+        mode = max(set(list_of_integers), key=list_of_integers.count)
+        return mode 
+    else:
+        mode = "none"
+        return mode 
 
 
+# appel de la fonction "control"
 control() 
