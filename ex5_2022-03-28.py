@@ -36,7 +36,7 @@ def user_data():
     return file_name, int_list
 
 # fonction ajoutant les statistiques dans un fichier txt via une boucle "for"
-# (le calcul des stats les plus simples à obtenir sont également effectuées ici)
+# (le calcul des stats les plus simples à obtenir est également effectuée ici)
 def file_write(name_of_file, list_of_integers):
     ascending_order = f"ordre croissant: {sorted(list_of_integers)}\n"
 
@@ -74,15 +74,39 @@ def calculate_median(list_of_integers):
     else: 
         return (sorted_list[index-1] + sorted_list[index]) / 2
 
-# fonction calculant le mode de la liste de positifs 
+# fonction calculant le mode de la liste de positifs avec méthode dictionnaire
 def calculate_mode(list_of_integers):
-    if len(list_of_integers) != len(set(list_of_integers)):
-        mode = max(set(list_of_integers), key=list_of_integers.count)
-        return mode 
+    dico = {}
+    i = 0
+    while i <= (len(list_of_integers)-1):
+        new_entry = {list_of_integers[i] : 0}
+        dico.update(new_entry)
+        i = i + 1
+
+    i = 0
+    while i <= (len(list_of_integers)-1):
+        dico[list_of_integers[i]] += 1 
+        i = i + 1
+
+    if max(dico.values()) > 1:
+        mode = max(dico, key=dico.get)
     else:
         mode = "none"
-        return mode 
+    
+    return mode 
 
 
 # appel de la fonction "control"
 control() 
+
+    
+
+    
+
+   #if len(list_of_integers) != len(set(list_of_integers)):
+   #     mode = max(set(list_of_integers), key=list_of_integers.count)
+   #     return mode 
+   # else:
+   #     mode = "none"
+   #     return mode 
+
