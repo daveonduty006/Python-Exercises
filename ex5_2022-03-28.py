@@ -77,23 +77,18 @@ def calculate_median(list_of_integers):
 # fonction calculant le mode de la liste de positifs avec méthode dictionnaire
 def calculate_mode(list_of_integers):
     dico = {}
-    i = 0
-    while i <= (len(list_of_integers)-1):
-        new_entry = {list_of_integers[i] : 0}
-        dico.update(new_entry)
-        i = i + 1
-
-    i = 0
-    while i <= (len(list_of_integers)-1):
-        dico[list_of_integers[i]] += 1 
-        i = i + 1
-
+    for n in list_of_integers:
+        if n in dico:
+            dico[n] = dico[n] + 1
+        else:
+            dico[n] = 1
+    
     if max(dico.values()) > 1:
         mode = max(dico, key=dico.get)
     else:
         mode = "none"
-    
-    return mode 
+
+    return mode
 
 
 # appel de la fonction "control"
