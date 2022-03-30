@@ -69,6 +69,7 @@ def file_write(name_of_file, list_of_integers):
 def calculate_median(list_of_integers):
     sorted_list = sorted(list_of_integers)
     index = len(list_of_integers) // 2 
+    
     if len(sorted_list) % 2 == 1:
         return sorted_list[index]
     else: 
@@ -83,8 +84,10 @@ def calculate_mode(list_of_integers):
         else:
             dico[n] = 1
     
-    if max(dico.values()) > 1:
-        mode = max(dico, key=dico.get)
+    max_value = max(dico.values()) 
+    if max(dico.values()) >= 2:
+        keys_with_max_value = [k for k,v in dico.items() if v == max_value]
+        mode = keys_with_max_value
     else:
         mode = "none"
 
