@@ -16,95 +16,100 @@
 #inscrire que le mode = none)
 #Ex: 1, 2, 2, 2, 3, 4, 3, 4. La mode = 3
 
-# fonction controllant le flux du programme 
-def control():
-    file_name, int_list = user_data()
-    file_write(file_name, int_list)
-    return
+# module regroupant des sous-fonctions pour des calculs de statistiques 
+def statistiques():
+    # sous-fonction récoltant les données de l'utilisateur
+    def user_input():
+        file_name = input("Entrez le nom du fichier: ")
 
-# fonction récoltant les retours de l'utilisateur
-def user_data():
-    file_name = input("Entrez le nom de votre futur fichier: ")
+        user_list = []
+        exit = False 
+        while not exit:
+            user_number = int(input("Entrez un entier positif: "))
+            if user_number >= 0:
+                user_list.append(user_number)
+            else:
+                exit = True
 
-    int_list = []
-    n = 1
-    while n > 0:
-        n = int(input("Entrez un nombre entier positif: "))
-        if n > 0:
-            int_list.append(n)
+        return file_name, user_list
+    # sous-fonction rangeant la liste en ordre croissant
+    def ascending_order(user_list):
+        sorted_list = user_list[:]
+        for i in range(len(sorted_list)-1):
+            min = sorted_list[i]
+            pos = i
+            for j in range(i, len(sorted_list)):
+                if sorted_list[j] < min:
+                    min = sorted_list[j] 
+                    pos = j
+            sorted_list[i], sorted_list[pos] = sorted_list[pos], sorted_list[i]
 
-    return file_name, int_list
+        return sorted_list
+    # sous-fonction rangeant la liste en ordre décroissant
+    def descending_order(user_list):
+        sorted_list = ascending_order(user_list)
 
-# fonction ajoutant les statistiques dans un fichier txt via une boucle "for"
-# (le calcul des stats les plus simples à obtenir est également effectuée ici)
-def file_write(name_of_file, list_of_integers):
-    ascending_order = f"ordre croissant: {sorted(list_of_integers)}\n"
+        reversed_list = sorted_list[::-1]
 
-    descending_order = (f"ordre décroissant: "
-                        f"{sorted(list_of_integers, reverse=True)}\n")
+        return reversed_list 
+    # sous-fonction obtenant le plus grand nombre dans la liste
+    def max_number(user_list):
 
-    maximum = f"maximum: {max(list_of_integers)}\n"
+        return ascending_order(user_list)[-1]
+    # sous-fonction obtenant le plus petit nombre dans la liste
+    def min_number(user_list):
 
-    minimum = f"minimum: {min(list_of_integers)}\n"
+        return ascending_order(user_list)[0]
+    # sous-fonction obtenant la moyenne des nombres de la liste
+    def average(user_list):
+        sum = 0 
+        for n in user_list:
+            sum += n
 
-    average = f"moyenne: {sum(list_of_integers)/len(list_of_integers)}\n"
+        return sum / len(user_list)
+    # sous-fonction obtenant la médianne de la liste
+    def median(user_list):
+        sorted_list = ascending_order(user_list)
 
-    median = calculate_median(list_of_integers) 
-    median = f"médiane: {median}\n"
- 
-    mode = calculate_mode(list_of_integers)
-    mode = f"mode: {mode}\n"
+        i = len(sorted_list) // 2
 
-    stats = [ascending_order, descending_order, maximum, minimum, average, \
-             median, mode]
+        if len(sorted_list) % 2 == 0:
+            return (sorted_list[i]+sorted_list[i-1]) / 2
+        else:
+            return sorted_list[i]
+    # sous-fonction obtenant le mode de la liste 
+    def mode(user_list):
+        counts = {}
+        for n in user_list:
+            if n in counts:
+                counts[n] += 1
+            else:
+                counts[n] = 1
+    
+        max_count = max(counts.values()) 
+        if max_count >= 2:
+            keys_with_max_count = [k for k,v in counts.items() if v == max_count]
+            return keys_with_max_count
+        else:
+            return None 
 
-    f = open(f"{name_of_file}.txt", "w", encoding="utf8")
+    file_name, user_list = user_input()
+    stats = []
+    stats.append(f"Liste initiale: {user_list}\n")
+    stats.append(f"Ordre croissant: {ascending_order(user_list)}\n")
+    stats.append(f"Ordre décroissant: {descending_order(user_list)}\n")
+    stats.append(f"Nombre maximal: {max_number(user_list)}\n")
+    stats.append(f"Nombre minimal: {min_number(user_list)}\n")
+    stats.append(f"Moyenne: {average(user_list)}\n")
+    stats.append(f"Médianne: {median(user_list)}\n")
+    stats.append(f"Mode: {mode(user_list)}\n")
+
+    f = open(f"{file_name}.txt", "w", encoding="utf8")
     for stat in stats:
         f.write(stat)
     f.close()
 
-    return 
 
-# fonction calculant la médiane de la liste de positifs 
-def calculate_median(list_of_integers):
-    sorted_list = sorted(list_of_integers)
-    index = len(list_of_integers) // 2 
-    
-    if len(sorted_list) % 2 == 1:
-        return sorted_list[index]
-    else: 
-        return (sorted_list[index-1] + sorted_list[index]) / 2
+statistiques() 
 
-# fonction calculant le mode de la liste de positifs avec méthode dictionnaire
-def calculate_mode(list_of_integers):
-    dico = {}
-    for n in list_of_integers:
-        if n in dico:
-            dico[n] = dico[n] + 1
-        else:
-            dico[n] = 1
-    
-    max_value = max(dico.values()) 
-    if max(dico.values()) >= 2:
-        keys_with_max_value = [k for k,v in dico.items() if v == max_value]
-        mode = keys_with_max_value
-    else:
-        mode = "none"
-
-    return mode
-
-
-# appel de la fonction "control"
-control() 
-
-    
-
-    
-
-   #if len(list_of_integers) != len(set(list_of_integers)):
-   #     mode = max(set(list_of_integers), key=list_of_integers.count)
-   #     return mode 
-   # else:
-   #     mode = "none"
-   #     return mode 
 

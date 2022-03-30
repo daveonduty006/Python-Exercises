@@ -1,23 +1,14 @@
-list_of_integers = [4, 7, 10]
+list_of_integers = [4, 7, 10, 7, 1, 9, 2, 7, 3]
 
-def calculate_mode(list_of_integers):
-    dico = {}
-    i = 0
-    while i <= (len(list_of_integers)-1):
-        new_entry = {list_of_integers[i] : 0}
-        dico.update(new_entry)
-        i = i + 1
-
-    i = 0
-    while i <= (len(list_of_integers)-1):
-        dico[list_of_integers[i]] += 1 
-        i = i + 1
-
-    if max(dico.values()) > 1:
-        mode = max(dico, key=dico.get)
-    else:
-        mode = "none"
+sorted_list = list_of_integers[:]
+for i in range(len(sorted_list)-1):
+    min = sorted_list[i]
+    pos = i
+    for j in range(i, len(sorted_list)):
+        if sorted_list[j] < min:
+            min = sorted_list[j] 
+            pos = j
+    sorted_list[i], sorted_list[pos] = sorted_list[pos], sorted_list[i]
     
-    return mode 
 
-calculate_mode(list_of_integers)
+print(sorted_list)
