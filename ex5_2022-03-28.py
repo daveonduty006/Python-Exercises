@@ -109,6 +109,8 @@ def statistiques():
         f.write(stat)
     f.close()
 
+    return 
+
 
 statistiques() 
 
