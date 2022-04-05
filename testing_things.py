@@ -1,14 +1,15 @@
-list_of_integers = [4, 7, 10, 7, 1, 9, 2, 7, 3]
+list_of_strs = ["4", "7", "10", "6", "1", "9", "2", "8"]
+copied_list = list_of_strs[:]
+list_of_strs = []
 
-sorted_list = list_of_integers[:]
-for i in range(len(sorted_list)-1):
-    min = sorted_list[i]
-    pos = i
-    for j in range(i, len(sorted_list)):
-        if sorted_list[j] < min:
-            min = sorted_list[j] 
-            pos = j
-    sorted_list[i], sorted_list[pos] = sorted_list[pos], sorted_list[i]
+
+for card in range(1, len(copied_list)+1):
+    if card % 4 == 0 and card != 0:
+        list_of_strs.append(card-3)
+        list_of_strs.append(card-2)
+        list_of_strs.append(card-1)
+        list_of_strs.append(card)
+
     
 
-print(sorted_list)
+print(list_of_strs)
