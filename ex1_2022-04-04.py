@@ -35,7 +35,7 @@ def loading():
     print("ready!")
 
 def chasing_unicode():
-    end = time() + 10
+    end = time() + 1
     bird = "\U0001f99c"
     dave = "\U0001f3c7"
     while time() < end:
@@ -52,10 +52,10 @@ def chasing_unicode():
 def spooky_chorus():
     line_1 = "A terrifying scream wakes you from a deep slumber\n"
     line_2 = "Slowly, you come to your senses, and realize where you are:\n"
-    line_3 = f"{'IT`S A MADHOUSE'}\n"
-    line_4 = f"{'OR SO THEY CLAIM'}\n"
-    line_5 = f"{'IT`S A MADHOUSE'}\n"
-    line_6 = f"{'OH, AM I INSANE?'}"
+    line_3 = "IT`S A MADHOUSE\n"
+    line_4 = "OR SO THEY CLAIM\n"
+    line_5 = "IT`S A MADHOUSE\n"
+    line_6 = "OH, AM I INSANE ?"
 
     list_of_lines = [line_1, line_2, line_3, line_4, line_5, line_6]
     for i in range(len(list_of_lines)-1):
@@ -63,7 +63,7 @@ def spooky_chorus():
             print(x, end='')
             sys.stdout.flush()
             sleep(.1)
-    print("OH!")
+    print(list_of_lines[-1][:2])
     sleep(1)
     for x in list_of_lines[-1][4:]:
         print(x, end='')
@@ -72,35 +72,34 @@ def spooky_chorus():
         if x == list_of_lines[-1][-1]:
             print("\n")
 
-
-
-
-
-
-    
-
-
-
-
-    
-
-        
-
+def blind_superman():
+    obstacle = "          <|"
+    player= "==:::o"
+    for c in range(1,11):
+        cls()
+        print(f"{player}{obstacle.replace(' ', '', c)}")
+        sleep(.2)
+        if c == 10:
+            cls()
+            print(f"{'BOOM'}")
+            sleep(.2)
 
 
 exit = False
 while not exit:
-    user_res = int(input(f"Menu principal:\n"
-                         f"1. Chargement\n"
-                         f"2. Poursuite de perroquet\n"
-                         f"3. Spooky\n"
-                         f"4. blabla"))
+    user_res = int(input(f"Main menu:\n"
+                         f"1. Loading\n"
+                         f"2. Chasing Bird while on a Horse\n"
+                         f"3. Spooky Chorus\n"
+                         f"4. Blind Superman\n"))
     if user_res == 1:
         loading()
     elif user_res == 2:
         chasing_unicode()
     elif user_res == 3:
         spooky_chorus()
+    elif user_res == 4:
+        blind_superman()
 
 
 
