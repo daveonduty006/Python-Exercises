@@ -12,7 +12,6 @@ import os
 from random import randint 
 import sys 
 
-#Permet d'effacer ce qui est afficher à la console.
 #Taken from https://stackoverflow.com/questions/2084508/clear-terminal-in-python
 #By user: poke
 def cls():
@@ -36,11 +35,11 @@ def loading():
     print("ready!")
 
 def chasing_unicode():
-    end = time() + 1
+    end = time() + 5
     bird = "\U0001f99c"
     dave = "\U0001f3c7"
     while time() < end:
-        for i in range(15,0,-1):
+        for i in range(25,0,-1):
             cls()
             print(f"""                 {bird.rjust(i)}
                        {dave.rjust(i)}""")
@@ -109,7 +108,8 @@ while not exit:
                          f"2. Chasing Bird while on a Horse\n"
                          f"3. Spooky Chorus\n"
                          f"4. Blind Superman\n"
-                         f"5. Rolling Dice\n"))
+                         f"5. Rolling Dice\n"
+                         f"6. Quit\n"))
     if user_res == 1:
         loading()
     elif user_res == 2:
@@ -120,6 +120,8 @@ while not exit:
         blind_superman()
     elif user_res == 5:
         rolling_dice()
+    elif user_res == 6:
+        exit = True 
 
 
 
