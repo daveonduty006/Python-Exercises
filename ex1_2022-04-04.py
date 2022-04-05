@@ -8,7 +8,8 @@
 #Faire la revue de paires pour l'exercice 1.
 
 from time import sleep, time 
-import os 
+import os
+from random import randint 
 import sys 
 
 #Permet d'effacer ce qui est afficher à la console.
@@ -84,6 +85,22 @@ def blind_superman():
             print(f"{'BOOM'}")
             sleep(.2)
 
+def rolling_dice():
+#Taken from https://storm-coder-dojo.github.io/activities/python/text-animations.html
+#By user: ???
+    die     = ["   \n O \n   "]   #1
+    die.append("  O\n   \nO  ")   #2
+    die.append("O  \n O \n  O")   #3
+    die.append("O O\n   \nO O")   #4
+    die.append("O O\n O \nO O")   #5
+    die.append("O O\nO O\nO O")   #6
+    for roll in range(0,15):
+        cls()
+        print("\n")
+        number = randint(0,5)
+        print(die[number])
+        sleep(0.2)
+
 
 exit = False
 while not exit:
@@ -91,7 +108,8 @@ while not exit:
                          f"1. Loading\n"
                          f"2. Chasing Bird while on a Horse\n"
                          f"3. Spooky Chorus\n"
-                         f"4. Blind Superman\n"))
+                         f"4. Blind Superman\n"
+                         f"5. Rolling Dice\n"))
     if user_res == 1:
         loading()
     elif user_res == 2:
@@ -100,6 +118,8 @@ while not exit:
         spooky_chorus()
     elif user_res == 4:
         blind_superman()
+    elif user_res == 5:
+        rolling_dice()
 
 
 
