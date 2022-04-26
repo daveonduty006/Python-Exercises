@@ -1,5 +1,6 @@
 import random
 import sys
+import os
 
 #Implémenter une classe board ayant:
 #une matrice en 2D de grosseur 15x15 possédant remplie d'objets de type game object. 
@@ -43,16 +44,25 @@ class Board:
     def __init__(self, array_dim:list):
         self.array_dim = array_dim
 
+    def menu(self):     
+        print("Menu d'accueil")
+        run = int(input("Press 1 for starting a new game: "))
+        if run == 1:
+            self.start_game()
+
     def start_game(self):
-        return True 
+        running = True
+        while running:
+            self.move()
 
     def print_board(self):
-        rows, columns = (10,10)
+        rows, columns = self.array_dim
         array = [[0]*columns]*rows
         for row in array:
             print(row)
 
     def move(self):
+        self.print_board()
         print("Press W for going Up")
         print("Press S for going Down")
         print("Press A for going Left")
@@ -66,12 +76,12 @@ class Board:
 
 class GameObject:
 
-    def __init__(self, pos, go_up=None, go_down=None, go_left=None, go_right=None):
+    def __init__(self, pos, north_go=None, south_go=None, east_go=None, west_go=None):
         self.pos = pos
-        self.go_up = go_up
-        self.go_down = go_down
-        self.go_left = go_left
-        self.go_right = go_right
+        self.north_go = north_go
+        self.south_go = south_go
+        self.east_go = east_go
+        self.west_go = west_go
 
     def __str__(self):
         return " "
@@ -94,9 +104,8 @@ class Obstacle(GameObject):
 
     def __init__(self):
         obstacles = []
-        obstacle = list(str(self))
         for i in range(25):
-            obstacles.append(obstacle)
+            obstacles.append(str(self))
 
     def __str__(self):
         return "X"
@@ -113,11 +122,9 @@ class Exit(GameObject):
         return True 
 
 
-array = []
-obstacles = []
-player = ""
-board = Board(array, obstacles, player)
-board.move()
+array_dim = [10,10]
+board = Board(array_dim)
+board.menu() 
 
 
 
