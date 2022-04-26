@@ -1,6 +1,7 @@
 import random
 import sys
 import os
+from turtle import pos
 
 #Implémenter une classe board ayant:
 #une matrice en 2D de grosseur 15x15 possédant remplie d'objets de type game object. 
@@ -43,6 +44,35 @@ class Board:
 
     def __init__(self, array_dim:list):
         self.array_dim = array_dim
+        rows, cols = self.array_dim
+        self.array = []
+        for row in range(cols):
+            row_go = []
+            for col in range(rows):
+                if row == cols-1 and col == 0:
+                    self.player = Player( (row,col) )
+                    row_go.append(self.player)
+                elif row == 0 and col == rows-1:
+                    self.exit = Exit( (row,col) )
+                    row_go.append(self.exit)
+                elif (row,col) != self.player.pos and (row,col) != self.exit.pos:
+                    ob_set = self.make_obstacles_set()
+                    row_go.append(self.go)
+            self.array.append(row_go)
+
+    def print_board(self):
+        for row in self.array:
+            print(row)  
+
+    def make_obstacles_set(self):
+        obstacle_set = []
+        for i in range(self.array_dim[0]*self.array_dim[1]//4):
+            self.obstacle = Obstacle()
+            obstacle_set.append(self.obstacle)
+        
+        for i 
+        return obstacle_set
+
 
     def menu(self):     
         print("Menu d'accueil")
@@ -52,17 +82,11 @@ class Board:
 
     def start_game(self):
         running = True
+        self.print_board()
         while running:
-            self.move()
-
-    def print_board(self):
-        rows, columns = self.array_dim
-        array = [[0]*columns]*rows
-        for row in array:
-            print(row)
+            self.move()                    
 
     def move(self):
-        self.print_board()
         print("Press W for going Up")
         print("Press S for going Down")
         print("Press A for going Left")
@@ -73,15 +97,10 @@ class Board:
             user_inp = input("Invalid input, try again: ")
         Player(user_inp)
 
-
 class GameObject:
 
-    def __init__(self, pos, north_go=None, south_go=None, east_go=None, west_go=None):
+    def __init__(self, pos):
         self.pos = pos
-        self.north_go = north_go
-        self.south_go = south_go
-        self.east_go = east_go
-        self.west_go = west_go
 
     def __str__(self):
         return " "
@@ -94,18 +113,16 @@ class GameObject:
 
 class Player(GameObject):
 
-    def __init__(self, input):
-        self_input = input
+    def __init__(self, pos):
+        super().__init__(pos)
 
     def __str__(self):
         return "▲"
 
 class Obstacle(GameObject):
 
-    def __init__(self):
-        obstacles = []
-        for i in range(25):
-            obstacles.append(str(self))
+    def __init__(self, pos):
+        super().__init__(pos)
 
     def __str__(self):
         return "X"
@@ -114,6 +131,9 @@ class Obstacle(GameObject):
         return True
 
 class Exit(GameObject):
+
+    def __init__(self, pos):
+        super().__init__(pos)
 
     def __str__(self):
         return "◘"
@@ -124,7 +144,7 @@ class Exit(GameObject):
 
 array_dim = [10,10]
 board = Board(array_dim)
-board.menu() 
+board.menu()
 
 
 
